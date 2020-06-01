@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # server apps
+    'consumer',
+
     # third party apps
+    'crispy_forms',
     'oauth2_provider',
     'corsheaders'
 ]
@@ -125,7 +129,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
+# Crispy form
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # allow cors
 CORS_ORIGIN_ALLOW_ALL = True

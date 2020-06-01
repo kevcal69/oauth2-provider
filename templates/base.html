@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap"
+          rel="stylesheet">
+{#    <link rel="stylesheet" href="{% staticfiles 'css/override.css' %}">#}
+    {% block css %}
+    {% endblock %}
+    <title> Cygnal SSO - {% block title %}{% endblock %}</title>
+</head>
+<body>
+{% block main %}
+{% endblock %}
+
+<script src="https://use.fontawesome.com/611e4dfe0e.js"></script>
+{% block js %}
+{% endblock %}
+</body>
+
+</html>
