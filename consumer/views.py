@@ -20,7 +20,8 @@ class LoginViewAuth(views.LoginView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('profile-view', args=(self.request.user.id,))
+        url = self.get_redirect_url()
+        return url or reverse_lazy('profile-view', args=(self.request.user.id,))
 
 
 class RegistrationForm(CreateView):

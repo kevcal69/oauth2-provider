@@ -1,6 +1,7 @@
 {% extends "oauth2_provider/base.html" %}
 {% load crispy_forms_tags %}
 
+
 {% load i18n %}
 {% block content %}
     <div class="card">
@@ -13,7 +14,7 @@
                 </h3>
                 {% csrf_token %}
 
-                {% crispy form %}
+                {{ form|crispy }}
 
                 <div class="control-group {% if form.non_field_errors %}error{% endif %}">
                     {% for error in form.non_field_errors %}
