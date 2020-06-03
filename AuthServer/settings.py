@@ -133,6 +133,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+SESSION_COOKIE_NAME = 'oauth2server_sessionid'
+LOGIN_URL = '/'
 # Crispy form
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

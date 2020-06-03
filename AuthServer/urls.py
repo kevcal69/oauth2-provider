@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from consumer.views import LoginViewAuth
+
 urlpatterns = [
     path('accounts/', include('consumer.urls')),
     path('admin/', admin.site.urls),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('', LoginViewAuth.as_view(), name='home')
 ]

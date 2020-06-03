@@ -2,10 +2,10 @@ from django import forms
 
 from crispy_forms.bootstrap import PrependedText
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit
+from crispy_forms.layout import Layout, Submit, Div, Field
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -14,23 +14,24 @@ User = get_user_model()
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
-        widget=forms.TextInput())
+        widget=forms.TextInput(),
+        help_text='Input your username'
+    )
     password = forms.CharField(
-        widget=forms.PasswordInput())
+        widget=forms.PasswordInput(),
+        help_text='Do not share your password'
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
+        # self.fields['username'] = 'Please fill up Username'
+        # self.fields['password'] = 'Do not share your password'
         self.helper.layout = Layout(
-            PrependedText(
-                'username', '<i class="fa fa-user" aria-hidden="true"></i>',
-                placeholder='Username'),
-            PrependedText(
-                'password', '<i class="fa fa-lock" aria-hidden="true"></i>',
-                placeholder='Password'),
-            Submit('submit', 'Login')
+            PrependedText('username', '<i class="fa fa-user" aria-hidden="true"></i>'),
+            PrependedText('password', '<i class="fa fa-lock" aria-hidden="true"></i>'),
+            Submit('submit', 'Login', css_class='btn btn-black')
         )
-        self.helper.form_show_labels = False
 
 
 class SignUpForm(UserCreationForm):
@@ -42,3 +43,9 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
+
+class UpdateUserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email',)

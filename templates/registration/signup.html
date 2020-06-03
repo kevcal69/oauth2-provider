@@ -4,11 +4,23 @@
 
 {% block title %}Sign Up{% endblock %}
 
-{% block content %}
-    <h2>Sign Up</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit">Sign Up</button>
-    </form>
+{% block main %}
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Cygnal <br>Authentication Provider</h2>
+        <h3>SSO - {{ title }}</h3>
+        <p><a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">register</a> from here to access.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-xl-8 col-md-10 col-sm-12">
+        <div class="login-form">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-black">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
